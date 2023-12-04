@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Server1",
+        "ip": "",
+        "username": "",
+        "password": "",
+        "port": 22,
+        "beforehooks": "",
+        "afterhooks": "",
+        "path": "/var/www/html/"
+    }
+]

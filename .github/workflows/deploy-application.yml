@@ -1,0 +1,40 @@
+name: Deplot Application
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+
+        - name: Compile CSS and JS
+          run: |
+            npm install
+            npm run production
+
+        - name: Configure PHP 8.0
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: 8.0
+            extensions: mbstring, zip, pdo_mysql, exif, pcntl, bcmath, gd, intl, soap, xsl, zip, sockets, opcache, imagick, redis, memcached, apcu, mongodb, swoole, xdebug
+            coverage: none
+
+        - name: Install Composer dependencies
+          run: compose install --no-dev --no-interaction --prefer-dist
+
+        - name: Create deployment artifact
+          env:
+            GITHUB_SHA: ${{ github.sha }}
+            run: tar -czf "${GITHUB_SHA}".tar.gz --exclude=*.git --exclude=node_modules *
+
+        - name: Store artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: application
+            path: "${GITHUB_SHA}".tar.gz
+
+
