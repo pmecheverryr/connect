@@ -1,0 +1,486 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Blog API",
+        "description": "Documentation API Blog",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "=\"http://connect.test\"",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/api/v1/authors": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Get list of authors",
+                "description": "$description",
+                "operationId": "getAuthorsList",
+                "requestBody": {
+                    "$ref": "#/components/schemas/Author"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Create a new author",
+                "description": "Creates a new author and returns it",
+                "operationId": "storeAuthor",
+                "requestBody": {
+                    "description": "Author data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthorRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Author created"
+                    }
+                }
+            }
+        },
+        "/api/v1/authors/{id}": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Get a author by ID",
+                "description": "Returns a single author",
+                "operationId": "getAuthorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the author",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/schemas/Author"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "204": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Update an existing author",
+                "operationId": "8568e7ac5d15476f0d29622c40be4c63",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Author ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Author data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Author"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Author updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Author"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Delete a author",
+                "description": "Deletes a author",
+                "operationId": "deleteAuthor",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Author ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Author updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Author"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Get list of posts",
+                "description": "Returns list of posts",
+                "operationId": "getPostsList",
+                "requestBody": {
+                    "$ref": "#/components/schemas/Post"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Create a new post",
+                "description": "Creates a new post and returns it",
+                "operationId": "storePost",
+                "requestBody": {
+                    "description": "Post data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Post created"
+                    }
+                }
+            }
+        },
+        "/api/v1/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Get a post by ID",
+                "description": "Returns a single post",
+                "operationId": "getPostById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the post",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostResource"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Update an existing post",
+                "operationId": "dcf5b8dcbaee8bb9fa6febfd2eeb0589",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Post data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Post updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Delete a post",
+                "description": "Deletes a post",
+                "operationId": "deletePost",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Post ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AuthorRequest": {
+                "title": "Author request",
+                "description": "Store Author request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "Name of the author",
+                        "type": "string",
+                        "example": "Author name"
+                    }
+                },
+                "type": "object"
+            },
+            "PostRequest": {
+                "title": "Post request",
+                "description": "Store Post request body data",
+                "required": [
+                    "title",
+                    "content",
+                    "author_id"
+                ],
+                "properties": {
+                    "title": {
+                        "description": "Title of the post",
+                        "type": "string",
+                        "example": "Post title"
+                    },
+                    "content": {
+                        "description": "Content of the post",
+                        "type": "string",
+                        "example": "Post content"
+                    },
+                    "author_id": {
+                        "description": "ID of the author",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "PostResource": {
+                "title": "Post resource",
+                "description": "Post resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "properties": {
+                            "id": {
+                                "$ref": "#/components/schemas/Post_id"
+                            },
+                            "title": {
+                                "$ref": "#/components/schemas/Post_title"
+                            },
+                            "content": {
+                                "$ref": "#/components/schemas/Post_content"
+                            },
+                            "status": {
+                                "$ref": "#/components/schemas/Post_status"
+                            },
+                            "author_id": {
+                                "$ref": "#/components/schemas/Post_author_id"
+                            },
+                            "author_name": {
+                                "$ref": "#/components/schemas/Post_author_name"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PostResource"
+                }
+            },
+            "Author": {
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "description": "ID",
+                        "format": "int64",
+                        "default": 1
+                    },
+                    "name": {
+                        "title": "Name author",
+                        "description": "Name Author",
+                        "format": "string",
+                        "default": "Author Spain"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Author"
+                }
+            },
+            "Post_id": {
+                "title": "Id",
+                "description": "ID",
+                "format": "int64",
+                "default": 1
+            },
+            "Post_title": {
+                "title": "Title",
+                "description": "Title",
+                "format": "string",
+                "default": "Title blog"
+            },
+            "Post_content": {
+                "title": "Content",
+                "description": "Content of Blog",
+                "format": "string",
+                "default": "Content blog"
+            },
+            "Post_status": {
+                "title": "Status",
+                "description": "Status of Blog",
+                "format": "boolean",
+                "default": "0"
+            },
+            "Post_author_id": {
+                "title": "Author",
+                "description": "Author of Blog",
+                "format": "integer",
+                "default": "1"
+            },
+            "Post_author_name": {
+                "title": "Author",
+                "description": "Author of Blog",
+                "format": "string",
+                "default": "Author Spain"
+            },
+            "Post": {
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Post_id"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/Post_title"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/Post_content"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/Post_status"
+                    },
+                    "author_id": {
+                        "$ref": "#/components/schemas/Post_author_id"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Post"
+                }
+            }
+        }
+    }
+}
