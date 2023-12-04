@@ -35,8 +35,8 @@ class PostController extends ApiController
      *
      *         @OA\JsonContent(ref="#/components/schemas/PostResource")
      *     ),
-     *
-     *     @OA\RequestBody(ref="#/components/schemas/Post")
+     *     @OA\RequestBody(ref="#/components/schemas/Post"),
+     *     security={{ "apiAuth": {} }}
      * )
      */
     public function index()
@@ -84,7 +84,7 @@ class PostController extends ApiController
      *           response=204,
      *           description="Not found",
      *      ),
-     *
+     *      security={{ "apiAuth": {} }}
      * )
      */
     public function show(Post $post): JsonResponse
@@ -113,7 +113,8 @@ class PostController extends ApiController
      *     @OA\Response(
      *         response=201,
      *         description="Post created"
-     *     )
+     *     ),
+     *     security={{ "apiAuth": {} }}
      * )
      */
     public function store(PostRequest $request): JsonResponse
@@ -158,7 +159,8 @@ class PostController extends ApiController
      *
      *         @OA\JsonContent(ref="#/components/schemas/Post")
      *     ),
-     *     tags={"Posts"}
+     *     tags={"Posts"},
+     *     security={{ "apiAuth": {} }}
      * )
      */
     public function update(PostRequest $request, Post $post): JsonResponse
@@ -212,7 +214,8 @@ class PostController extends ApiController
      *           response=404,
      *           description="Resource Not Found"
      *       ),
-     *      tags={"Posts"}
+     *      tags={"Posts"},
+     *      security={{ "apiAuth": {} }}
      *  )
      */
     public function destroy(Post $post): JsonResponse

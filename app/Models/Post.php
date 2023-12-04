@@ -47,6 +47,9 @@ use OpenApi\Annotations as OA;
  * )
  *
  * @property int $author_id
+ *  @OA\Schema(
+ *      schema="Post_author_by", format="string", title="Author", default="Author Spain", description="Author of Blog"
+ *  )
  *
  *  @OA\Schema(
  *

@@ -7,157 +7,11 @@
     },
     "servers": [
         {
-            "url": "=\"http://connect.test\"",
+            "url": "http://connect.test",
             "description": "API Server"
         }
     ],
     "paths": {
-        "/api/v1/authors": {
-            "get": {
-                "tags": [
-                    "Authors"
-                ],
-                "summary": "Get list of authors",
-                "description": "$description",
-                "operationId": "getAuthorsList",
-                "requestBody": {
-                    "$ref": "#/components/schemas/Author"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Authors"
-                ],
-                "summary": "Create a new author",
-                "description": "Creates a new author and returns it",
-                "operationId": "storeAuthor",
-                "requestBody": {
-                    "description": "Author data",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/AuthorRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Author created"
-                    }
-                }
-            }
-        },
-        "/api/v1/authors/{id}": {
-            "get": {
-                "tags": [
-                    "Authors"
-                ],
-                "summary": "Get a author by ID",
-                "description": "Returns a single author",
-                "operationId": "getAuthorById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the author",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "$ref": "#/components/schemas/Author"
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "204": {
-                        "description": "Not found"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Authors"
-                ],
-                "summary": "Update an existing author",
-                "operationId": "8568e7ac5d15476f0d29622c40be4c63",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Author ID",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Author data",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Author"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Author updated successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Author"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Authors"
-                ],
-                "summary": "Delete a author",
-                "description": "Deletes a author",
-                "operationId": "deleteAuthor",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Author ID",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Author updated successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Author"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/v1/posts": {
             "get": {
                 "tags": [
@@ -180,7 +34,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -204,7 +63,12 @@
                     "201": {
                         "description": "Post created"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/api/v1/posts/{id}": {
@@ -240,7 +104,12 @@
                     "204": {
                         "description": "Not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -281,7 +150,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -319,34 +193,23 @@
                     "404": {
                         "description": "Resource Not Found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         }
     },
     "components": {
         "schemas": {
-            "AuthorRequest": {
-                "title": "Author request",
-                "description": "Store Author request body data",
-                "required": [
-                    "name"
-                ],
-                "properties": {
-                    "name": {
-                        "description": "Name of the author",
-                        "type": "string",
-                        "example": "Author name"
-                    }
-                },
-                "type": "object"
-            },
             "PostRequest": {
                 "title": "Post request",
                 "description": "Store Post request body data",
                 "required": [
                     "title",
-                    "content",
-                    "author_id"
+                    "content"
                 ],
                 "properties": {
                     "title": {
@@ -358,11 +221,6 @@
                         "description": "Content of the post",
                         "type": "string",
                         "example": "Post content"
-                    },
-                    "author_id": {
-                        "description": "ID of the author",
-                        "type": "integer",
-                        "example": "1"
                     }
                 },
                 "type": "object"
@@ -387,11 +245,8 @@
                             "status": {
                                 "$ref": "#/components/schemas/Post_status"
                             },
-                            "author_id": {
-                                "$ref": "#/components/schemas/Post_author_id"
-                            },
-                            "author_name": {
-                                "$ref": "#/components/schemas/Post_author_name"
+                            "author_by": {
+                                "$ref": "#/components/schemas/Post_author_by"
                             }
                         },
                         "type": "object"
@@ -400,26 +255,6 @@
                 "type": "object",
                 "xml": {
                     "name": "PostResource"
-                }
-            },
-            "Author": {
-                "properties": {
-                    "id": {
-                        "title": "Id",
-                        "description": "ID",
-                        "format": "int64",
-                        "default": 1
-                    },
-                    "name": {
-                        "title": "Name author",
-                        "description": "Name Author",
-                        "format": "string",
-                        "default": "Author Spain"
-                    }
-                },
-                "type": "object",
-                "xml": {
-                    "name": "Author"
                 }
             },
             "Post_id": {
@@ -458,6 +293,12 @@
                 "format": "string",
                 "default": "Author Spain"
             },
+            "Post_author_by": {
+                "title": "Author",
+                "description": "Author of Blog",
+                "format": "string",
+                "default": "Author Spain"
+            },
             "Post": {
                 "properties": {
                     "id": {
@@ -480,6 +321,16 @@
                 "xml": {
                     "name": "Post"
                 }
+            }
+        },
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }
