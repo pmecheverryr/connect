@@ -1,8 +1,12 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
 parameters:
-    level: 8
+    level: max
     paths:
         - app
         - tests
-    excludes_analyse:
+    excludePaths:
         - %currentWorkingDirectory%/storage/*
         - %currentWorkingDirectory%/bootstrap/cache/*
+        - app/Providers/RouteServiceProvider.php
+        - app/Http/Middleware/RedirectIfAuthenticated.php
