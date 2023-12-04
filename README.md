@@ -7,60 +7,40 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# About Connect
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Connect es una aplicación de blog dinámica y versátil diseñada para conectar a escritores apasionados con lectores de todo el mundo. Con un enfoque en la comunidad y el intercambio de conocimientos, Connect no solo facilita la creación de contenido atractivo, sino que también promueve la interacción y el aprendizaje mutuo entre sus usuarios
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Estructura del Proyecto:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Blog Público:
+Se implementó una sección de blog que incluye una lista de posts y una página para cada post. Cada página de post muestra información detallada del post junto con una ficha del autor.
 
-## Learning Laravel
+#### API:
+Se crearon dos endpoints:
+GET: Para obtener los posts, incluyendo la información del autor en cada post.
+POST: Para publicar un nuevo post. Aunque no se requirió una base de datos real, se simuló la inserción y se implementó validación de los datos enviados.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Principios de Desarrollo:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Se siguió una estructura backend cuidada, aplicando principios SOLID y una correcta separación de servicios y responsabilidades.
+Se introdujeron interfaces para mejorar la modularidad y la capacidad de mantenimiento del código.
+Se implementaron medidas para la tolerancia a fallos.
+Herramientas y Tecnologías Utilizadas:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Laravel:** Se utilizó la última versión estable de Laravel.
+**PHP 8.*:** Se programó en PHP 8, cumpliendo con los requisitos de versión.
+**Composer y PSR-4:** Se utilizó Composer para la gestión de dependencias y se siguió la estructura PSR-4.
+**Testing Unitario:** Se incluyeron pruebas unitarias para asegurar el correcto funcionamiento del código.
+**JSON:** La API devuelve y consume datos en formato JSON.
+**Idioma:** Todo el código y comentarios están en inglés.
+**SQLite:** Se utilizó SQLite para la base de datos, ya que no se requería una base de datos real.
 
-## Laravel Sponsors
+#### Herramientas Adicionales:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Análisis Estático y Estilo de Código:** Se utilizó PHPStan y PHP CS Fixer para garantizar la calidad y consistencia del código.
+**SCSS y Webpack:** Se empleó SCSS para los estilos y Webpack (a través de Laravel Mix) para la compilación de assets.
+**Swagger/OpenAPI:** Se proporcionó una documentación de la API utilizando Swagger/OpenAPI.
+**Sonalint** Se utilizó Sonalint para analizar la calidad del código, proporcionando feedback en tiempo real mientras escribes el código. Esto es particularmente útil para identificar y corregir errores, vulnerabilidades de seguridad, y problemas de estilo de código de manera eficiente y oportuna.
+La integración de SonarLint demuestra un compromiso con la calidad del código y las mejores prácticas de programación, ya que permite abordar los problemas en una etapa temprana del desarrollo.
+Implementación de Qodana en el proyecto - Connect desarrollado con Laravel no solo mejora la calidad y seguridad del código, sino que también contribuye a un proceso de desarrollo más eficiente y colaborativo. Además, refleja un enfoque profesional y moderno hacia el desarrollo de software, alineándose con las expectativas de las prácticas actuales en la industria.
