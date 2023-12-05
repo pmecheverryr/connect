@@ -27,20 +27,20 @@ Se siguió una estructura backend cuidada, aplicando principios SOLID y una corr
 Se introdujeron interfaces para mejorar la modularidad y la capacidad de mantenimiento del código.
 Se implementaron medidas para la tolerancia a fallos.
 Herramientas y Tecnologías Utilizadas:
-
-**Laravel:** Se utilizó la última versión estable de Laravel.
-**PHP 8.*:** Se programó en PHP 8, cumpliendo con los requisitos de versión.
-**Composer y PSR-4:** Se utilizó Composer para la gestión de dependencias y se siguió la estructura PSR-4.
-**Testing Unitario:** Se incluyeron pruebas unitarias para asegurar el correcto funcionamiento del código.
-**JSON:** La API devuelve y consume datos en formato JSON.
-**Idioma:** Todo el código y comentarios están en inglés.
-**SQLite:** Se utilizó SQLite para la base de datos, ya que no se requería una base de datos real.
+- **Laravel:** Se utilizó la última versión estable de Laravel.
+- **PHP 8.*:** Se programó en PHP 8, cumpliendo con los requisitos de versión.
+- **Composer y PSR-4:** Se utilizó Composer para la gestión de dependencias y se siguió la estructura PSR-4.
+- **Testing Unitario:** Se incluyeron pruebas unitarias para asegurar el correcto funcionamiento del código.
+- **JSON:** La API devuelve y consume datos en formato JSON.
+- **Idioma:** Todo el código y comentarios están en inglés.
+- **SQLite:** Se utilizó SQLite para la base de datos, ya que no se requería una base de datos real.
+- **Frontented** Se utilizó el motor de plantillas Blade para el frontend.
+- **Autenticación** Se utilizó Breeze para la autenticación y se implementó una interfaz de usuario básica para la sección de blog y el paquete php-open-source-saver/jwt-auth para autenticación por medio de JWT.
 
 #### Herramientas Adicionales:
 
-**Análisis Estático y Estilo de Código:** Se utilizó PHPStan y PHP CS Fixer para garantizar la calidad y consistencia del código.
-**SCSS y Webpack:** Se empleó SCSS para los estilos y Webpack (a través de Laravel Mix) para la compilación de assets.
-**Swagger/OpenAPI:** Se proporcionó una documentación de la API utilizando Swagger/OpenAPI.
-**Sonalint** Se utilizó Sonalint para analizar la calidad del código, proporcionando feedback en tiempo real mientras escribes el código. Esto es particularmente útil para identificar y corregir errores, vulnerabilidades de seguridad, y problemas de estilo de código de manera eficiente y oportuna.
-La integración de SonarLint demuestra un compromiso con la calidad del código y las mejores prácticas de programación, ya que permite abordar los problemas en una etapa temprana del desarrollo.
-Implementación de Qodana en el proyecto - Connect desarrollado con Laravel no solo mejora la calidad y seguridad del código, sino que también contribuye a un proceso de desarrollo más eficiente y colaborativo. Además, refleja un enfoque profesional y moderno hacia el desarrollo de software, alineándose con las expectativas de las prácticas actuales en la industria.
+- **Análisis Estático y Estilo de Código:** Se utilizó PHPStan y PHP CS Fixer para garantizar la calidad y consistencia del código.
+- **SCSS y Webpack:** Se empleó SCSS para los estilos y Webpack (a través de Laravel Mix) para la compilación de assets.
+- **Swagger/OpenAPI:** Se proporcionó una documentación de la API utilizando Swagger/OpenAPI.
+- **Sonalint** Se utilizó Sonalint para analizar la calidad del código, proporcionando feedback en tiempo real mientras escribes el código. Esto es particularmente útil para identificar y corregir errores, vulnerabilidades de seguridad, y problemas de estilo de código de manera eficiente y oportuna. La integración de SonarLint demuestra un compromiso con la calidad del código y las mejores prácticas de programación, ya que permite abordar los problemas en una etapa temprana del desarrollo.
+- **Qodana** Implementación de Qodana en el proyecto desarrollado con Laravel no solo mejora la calidad y seguridad del código, sino que también contribuye a un proceso de desarrollo más eficiente y colaborativo. Además, refleja un enfoque profesional y moderno hacia el desarrollo de software, alineándose con las expectativas de las prácticas actuales en la industria.
