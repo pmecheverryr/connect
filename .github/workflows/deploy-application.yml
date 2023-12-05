@@ -49,11 +49,11 @@ jobs:
         cp .env.ci .env
         php artisan key:generate && php artisan jwt:secret -f
 
-    - name: Run Test suite
-      run: php artisan test
-
     - name: Install NPM dependencies
       run: npm install
 
     - name: Compile assets
       run: npm run build
+
+    - name: Run Test suite
+      run: php artisan test
