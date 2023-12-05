@@ -47,7 +47,7 @@ jobs:
     - name: Prepare Laravel Application
       run: |
         cp .env.ci .env
-        php artisan key:generate
+        php artisan key:generate && php artisan jwt:secret -f
 
     - name: Run Test suite
       run: php artisan test
