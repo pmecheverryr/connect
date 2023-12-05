@@ -1,40 +1,59 @@
 name: Deplot Application
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
-      - master
+      - main
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
+  tests:
+    runs-on: ubuntu-latest
 
-        - name: Compile CSS and JS
-          run: |
-            npm install
-            npm run production
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
-        - name: Configure PHP 8.0
-          uses: shivammathur/setup-php@v2
-          with:
-            php-version: 8.0
-            extensions: mbstring, zip, pdo_mysql, exif, pcntl, bcmath, gd, intl, soap, xsl, zip, sockets, opcache, imagick, redis, memcached, apcu, mongodb, swoole, xdebug
-            coverage: none
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
 
-        - name: Install Composer dependencies
-          run: compose install --no-dev --no-interaction --prefer-dist
+    - name: Cache composer dependencies
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          composer-
 
-        - name: Create deployment artifact
-          env:
-            GITHUB_SHA: ${{ github.sha }}
-            run: tar -czf "${GITHUB_SHA}".tar.gz --exclude=*.git --exclude=node_modules *
+    - name: Install PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
 
-        - name: Store artifact
-          uses: actions/upload-artifact@v2
-          with:
-            name: application
-            path: "${GITHUB_SHA}".tar.gz
+    - name: Install composer dependencies
+      run: |
+        composer install --no-scripts
 
+    - name: Prepare Laravel Application
+      run: |
+        cp .env.ci .env
+        php artisan key:generate
 
+    - name: Run Test suite
+      run: php artisan test
+
+    - name: Install NPM dependencies
+      run: npm install
+
+    - name: Compile assets
+      run: npm run build
