@@ -22,3 +22,4 @@ yarn-error.log
 
 # Tinkerwell
 .phpactor.json
+database/*.sqlite
